@@ -1,6 +1,9 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark">
-    <a class="navbar-brand" href="/">Rick And Morty</a>
+  <nav class="navbar navbar-expand-lg">
+
+    <router-link class="navbar-brand" to="/">
+      <img src="../assets/logo.png" alt="Rick And Morty" width="145">
+    </router-link>
 
     <button
         class="navbar-toggler"
@@ -13,31 +16,19 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="burgerMenu">
+    <nav class="collapse navbar-collapse" id="burgerMenu">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item" :class="{active : activeItem1}">
-          <a class="nav-link" :href="navItem1">{{ navItem1.substr(1) }}</a>
+        <li class="nav-item">
+          <router-link class="nav-link" to="/character">personajes</router-link>
         </li>
-        <li class="nav-item" :class="{active : activeItem2}">
-          <a class="nav-link" :href="navItem2">{{ navItem2.substr(1) }}</a>
+        <li class="nav-item">
+          <router-link class="nav-link" to="/location">Planetas</router-link>
         </li>
-        <li class="nav-item" :class="{active : activeItem3}">
-          <a class="nav-link" :href="navItem3">{{ navItem3.substr(1) }}</a>
+        <li class="nav-item">
+          <router-link class="nav-link" to="/episode">Episodios</router-link>
         </li>
       </ul>
-
-      <form class="form-inline my-2 my-lg-0">
-        <input
-          class="form-control mr-sm-2"
-          type="text"
-          v-model="search"
-          @keyup.enter="searchData()"/>
-        <button
-          class="btn btn-outline-success my-2 my-sm-0"
-          type="submit"
-          @click="searchData()">Search</button>
-      </form>
-    </div>
+    </nav>
 
   </nav>
 </template>
@@ -45,60 +36,18 @@
 <script>
 export default {
   name: 'Navbar',
-  data() {
-    return {
-      search: '',
-      activeItem1: false,
-      activeItem2: false,
-      activeItem3: false,
-    };
-  },
-  props: [
-    'navItem1',
-    'navItem2',
-    'navItem3',
-    'pathname',
-  ],
-  created() {
-    this.activeClass();
-  },
-  methods: {
-    searchData() {
-      this.$emit('searchData', this.search);
-    },
-    activeClass() {
-      switch (this.pathname) {
-        case this.navItem1:
-          this.activeItem1 = true;
-          this.activeItem2 = false;
-          this.activeItem3 = false;
-          break;
-        case this.navItem2:
-          this.activeItem1 = false;
-          this.activeItem2 = true;
-          this.activeItem3 = false;
-          break;
-        case this.navItem3:
-          this.activeItem1 = false;
-          this.activeItem2 = false;
-          this.activeItem3 = true;
-          break;
-        default:
-          this.activeItem1 = false;
-          this.activeItem2 = false;
-          this.activeItem4 = false;
-          break;
-      }
-    },
-  },
 };
 </script>
 
 <style>
+nav.navbar {
+  background-color: #18192b;
+}
 a.nav-link {
   text-transform: capitalize;
+  color: #0FAEBF;
 }
-nav.navbar {
-  background-color: #498350;
+a.nav-link:hover, .router-link-active {
+  color: #41A632;
 }
 </style>
