@@ -19,13 +19,13 @@
     <nav class="collapse navbar-collapse" id="burgerMenu">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <router-link class="nav-link" to="/character">personajes</router-link>
+          <router-link class="nav-link" to="/characters">Personajes</router-link>
         </li>
         <li class="nav-item">
-          <router-link class="nav-link" to="/location">Planetas</router-link>
+          <router-link class="nav-link" to="/locations">Planetas</router-link>
         </li>
         <li class="nav-item">
-          <router-link class="nav-link" to="/episode">Episodios</router-link>
+          <router-link class="nav-link" to="/episodes">Episodios</router-link>
         </li>
       </ul>
     </nav>
@@ -47,7 +47,7 @@ a.nav-link {
   text-transform: capitalize;
   color: #0FAEBF;
 }
-a.nav-link:hover, .router-link-active {
+a.nav-link:hover, .router-link-exact-active.router-link-active {
   color: #41A632;
 }
 </style>

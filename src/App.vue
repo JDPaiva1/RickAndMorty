@@ -17,6 +17,6 @@ export default {
 #app {
   text-align: center;
   color: #18192B;
-  background-color: #D9CF41;
+  background-color: #fff;
 }
 </style>
