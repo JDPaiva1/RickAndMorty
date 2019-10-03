@@ -1,0 +1,66 @@
+<template>
+  <div class="container py-3">
+    <div class="row shadow rounded bg-blue my-3 mx-auto p-3">
+      <div class="col-md-12 p-0">
+        <h3>{{ location.name }}</h3>
+        <hr class="long"/>
+      </div>
+      <div class="col-md-6">
+        <h6>Estado</h6>
+        <p>{{ location.type }}</p>
+      </div>
+      <div class="col-md-6">
+        <h6>Especie</h6>
+        <p>{{ location.dimension }}</p>
+      </div>
+      <div class="col-md-12">
+        <h4 class="my-3">Residentes</h4>
+        <div class="card">
+          <ul class="list-group list-group-flush">
+            <li v-for="resident in location.residents" :key="resident" class="list-group-item">
+              <router-link to="/">{{ resident }}</router-link>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'location',
+  data() {
+    return {
+      url: 'https://rickandmortyapi.com/api',
+      id: window.location.pathname,
+      location: {},
+    };
+  },
+  created() {
+    this.fetchLocation();
+  },
+  methods: {
+    fetchLocation() {
+      fetch(this.url + this.id)
+        .then(res => res.json())
+        .then((res) => { this.location = res; })
+        // eslint-disable-next-line
+        .catch(err => console.log(err));
+    },
+  },
+};
+</script>
+
+<style scoped>
+.bg-blue {
+  background-color: #0c97a7;
+}
+.card {
+  border-color: #18192b;
+}
+.card .list-group.list-group-flush .list-group-item {
+  background-color: #0FAEBF;
+  border-color: #18192b;
+}
+</style>

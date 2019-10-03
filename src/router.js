@@ -1,9 +1,11 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Home from './views/Home.vue';
-import Characters from './views/Characters.vue';
+import Home from './components/Home.vue';
+import Characters from './components/Characters.vue';
 import Character from './components/Character.vue';
-import Locations from './views/Locations.vue';
+import Locations from './components/Locations.vue';
+import Location from './components/Location.vue';
+import Error404 from './components/Error404.vue';
 
 Vue.use(Router);
 
@@ -18,9 +20,6 @@ export default new Router({
     {
       path: '/characters',
       name: 'characters',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: Characters,
     },
     {
@@ -32,6 +31,15 @@ export default new Router({
       path: '/locations',
       name: 'locations',
       component: Locations,
+    },
+    {
+      path: '/location/:id',
+      name: 'location',
+      component: Location,
+    },
+    {
+      path: '*',
+      component: Error404,
     },
   ],
 });

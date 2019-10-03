@@ -1,6 +1,6 @@
 <template>
   <div class="row justify-content-center">
-    <div v-for="item of items" :key="item.id" class="card col-10 col-md-6 col-lg-5 m-3 p-0">
+    <div v-for="item of items" :key="item.id" class="shadow card col-10 col-md-6 col-lg-5 m-3 p-0">
       <div class="row no-gutters">
         <div class="col-md-4 align-self-center">
           <img :src="item.image" class="card-img" :alt="item.name"/>
@@ -16,7 +16,7 @@
               <small class="text-muted"> Origen: {{ item.origin.name }}</small>
             </p>
             <router-link
-              class="btn btn-success btn-sm mt-3"
+              class="shadow btn btn-success btn-sm mt-3"
               :to="{ name: 'character', params: { id: item.id }}">
               Ver Más
             </router-link>
@@ -24,10 +24,12 @@
         </div>
       </div>
     </div>
+
     <div class="w-100"></div>
 
     <Pagination
       :page="page"
+      :info="info"
       @fetchItems="fetchItems"
       @updatePage="updatePage"/>
   </div>
@@ -44,6 +46,7 @@ export default {
       items: [],
       url: 'https://rickandmortyapi.com/api/character/?page=',
       page: 1,
+      info: {},
     };
   },
   created() {
@@ -53,7 +56,10 @@ export default {
     fetchItems() {
       fetch(this.url + this.page)
         .then(res => res.json())
-        .then((res) => { this.items = res.results; })
+        .then((res) => {
+          this.items = res.results;
+          this.info = res.info;
+        })
         // eslint-disable-next-line
         .catch(err => console.log(err));
     },
@@ -64,7 +70,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 div.card {
   background-color: #9FBF2A;
 }
@@ -72,4 +78,4 @@ div.card {
   background-color: #0FAEBF;
   color: #18192b;
 }
-</style>
+</style>>
