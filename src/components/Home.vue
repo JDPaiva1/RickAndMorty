@@ -1,6 +1,6 @@
 <template>
   <div>
-    <img alt="Vue logo" src="../assets/bg.jpg" width="1425">
+    <img alt="Portada Rick y Morty" src="@/assets/bg.jpg" width="1425">
   </div>
 </template>
 

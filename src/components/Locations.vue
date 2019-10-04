@@ -17,7 +17,7 @@
         </div>
         <router-link
           class="btn btn-success btn-sm mt-3"
-          :to="{ name: 'location', params: { id: item.id }}">
+          :to="{ path: `/location/${item.id}` }">
           Ver Más
         </router-link>
       </div>

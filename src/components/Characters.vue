@@ -17,7 +17,7 @@
             </p>
             <router-link
               class="shadow btn btn-success btn-sm mt-3"
-              :to="{ name: 'character', params: { id: item.id }}">
+              :to="{ path: `/character/${item.id}` }">
               Ver Más
             </router-link>
           </div>

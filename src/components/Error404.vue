@@ -7,15 +7,17 @@
         <h2>404 No encontrado</h2>
         <div class="py-2">
           <p>
-            Pero aquí encontraste a:
-            <router-link :to="{ name: 'character', params: { id: character.id }}">
+            Pero aquí encontraste a
+            <router-link :to="{ path: `/character/${character.id}` }">
               {{character.name}}
             </router-link>
           </p>
           <img :src="character.image" :alt="character.name"/>
         </div>
         <div class="mt-2 mb-2">
-          <router-link to="/" class="btn btn-primary btn-lg my-1">Volver</router-link>
+          <router-link :to="{ name: 'home' }" class="btn btn-primary btn-lg my-1">
+            Volver
+          </router-link>
         </div>
       </div>
     </div>

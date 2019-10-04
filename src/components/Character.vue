@@ -5,7 +5,6 @@
         <div class="tab-content pb-3">
           <div class="tab-pane active" :id="character.id">
 
-
             <div class="row shadow rounded bg-blue my-5 p-3">
               <div class="col-md-12 p-0">
                 <h3>{{ character.name }}</h3>
@@ -23,7 +22,7 @@
                 <p>{{ character.gender }}</p>
                 <hr class="short"/>
                 <h6>Origen</h6>
-                <router-link :to="{ name: 'location', params: { id: originId[0] }}">
+                <router-link :to="{ path: `/location/${originId[0]}` }">
                   {{ character.origin.name }}
                 </router-link>
               </div>
@@ -34,14 +33,14 @@
                 <h5 class="mt-2">Episodios</h5>
                 <table class="table table-hover table-striped">
                   <tbody>
-                    <tr v-for="episode in character.episode" :key="episode">
-                      <td>{{ episode }}</td>
+                    <tr v-for="(value, index) in character.episode" :key="index">
+                      <td>{{ value }}</td>
                     </tr>
                   </tbody>
                 </table>
               </div>
-
             </div>
+
           </div>
         </div>
       </div>
